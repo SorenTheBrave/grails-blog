@@ -55,8 +55,10 @@ end
 
 def many_posts_exist?
   answer = false
-  if(@browser.div(:class, "pagination").text != "")
-    answer = true
+  on_page PostsPage do
+    if(@browser.div(:class, "pagination").text != "")
+      answer = true
+    end
   end
   answer
 end
@@ -70,4 +72,36 @@ def get_all_posts
     posts
   end
   posts
+end
+
+def see_recent_posts_in_order
+  on_page PostsPage do
+    posts = get_all_posts
+    prev_post_date = nil
+    current_post_date = nil
+    format = '%Y-%m-%d%n%H:%M:%S'   #DateTime.strptime Format for 'YYYY-MM-DD HH:MM:SS' - e.g. 2015-07-21 12:34:56 EDT
+
+    posts.each do |post|
+      prev_post_date = current_post_date
+      current_post_date_str = post.scan(/\d+[-]\d+[-]\d+\s\d+[:]\d+[:]\d+/)[0]
+      current_post_date = DateTime.strptime(current_post_date_str, format)
+
+      expect(post).to_not be_nil
+      unless prev_post_date == nil
+        expect(prev_post_date).to be >= current_post_date
+      end
+    end
+  end
+end
+
+def choose_random_post
+  post_num = Random.rand(1..10)
+  @browser.div(:id, "list-blog").table.tbody.tr(:index, post_num).a.click
+end
+
+def post_exists?
+  on_page SuccessPostPage do |page|
+    expect(@browser.div(:id, "show-blog").ol.li(:index,0).span(:index,1)).not_to eq ""
+    expect(@browser.div(:id, "show-blog").ol.li(:index,1).span(:index,1)).not_to eq ""
+  end
 end

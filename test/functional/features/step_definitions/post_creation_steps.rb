@@ -1,7 +1,6 @@
 require "watir-webdriver"
 
 extend PageObject::PageFactory
-#home_page = BlogHomePage.new(browser)
 
 Given(/^I am logged in as a blogger$/) do
   go_to_blog_posts

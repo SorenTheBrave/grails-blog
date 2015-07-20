@@ -20,40 +20,25 @@ extend PageObject::PageFactory
   end
 
   Then(/^I should see a summary of my favorite blogger's 10 most recent posts in reverse order$/) do
-    posts = get_all_posts
-    prev_post_date = nil
-    current_post_date = nil
-    format = '%Y-%m-%d%n%H:%M:%S'   #DateTime.strptime Format for 'YYYY-MM-DD HH:MM:SS' - e.g. 2015-07-21 12:34:56 EDT
-
-    posts.each do |post|
-      prev_post_date = current_post_date
-      current_post_date_str = post.scan(/\d+[-]\d+[-]\d+\s\d+[:]\d+[:]\d+/)[0]
-      current_post_date = DateTime.strptime(current_post_date_str, format)
-
-      expect(post).to_not be_nil
-      unless prev_post_date == nil
-        expect(prev_post_date).to be >= current_post_date
-      end
-    end
+    see_recent_posts_in_order
   end
 
 #Scenario: View a Blog Post
-#   Given (/^I visit the blog for my favorite blogger$/) do
-#
-#   end
-#
-#   When (/^I choose a blog post$/) do
-#
-#   end
-#
-#   Then (/^I should see the blog post$/) do
-#
-#   end
-#
+
+  #Given is covered by the previous 'When' - it matches the REGEX, so it doesn't matter that it's When instead of Given
+
+  When (/^I choose a blog post$/) do
+    go_to_blog_posts
+    choose_random_post
+  end
+
+  Then (/^I should see the blog post$/) do
+    post_exists?
+  end
+
 # #Scenario: Search for Blog Post
-#    Given (/^I visit the blog for my favorite blogger$/) do
 #
-#    end
+#    #Given is covered by the previous 'When' - it matches the REGEX, so it doesn't matter that it's When instead of Given
 #
 #    When (/^I search for a blog post$/) do
 #

@@ -9,10 +9,11 @@ class Blog {
 
     static constraints = {
 		title(blank: false)
-		content(blank: false)
+		content(blank: false, widget: 'textarea', maxSize: 2000)
     }
 	
 	static mapping = {
 		sort dateCreated: "desc"
+		content type: "text"
 	}
 }
