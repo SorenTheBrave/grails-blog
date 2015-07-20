@@ -51,7 +51,7 @@
 		<div id="page-body" role="main">
 			<h1>Welcome to your new blog!</h1>
 			<p>Click below to go to your blog!</p>
-			<a href="/grails-blog/blog/index">Go to my blog </a>
+			<a id="login" href="/grails-blog/blog/index">Go to my blog </a>
 		</div>
 	</body>
 </html>
