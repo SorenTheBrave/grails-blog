@@ -36,14 +36,14 @@ extend PageObject::PageFactory
     post_exists?
   end
 
-# #Scenario: Search for Blog Post
-#
-#    #Given is covered by the previous 'When' - it matches the REGEX, so it doesn't matter that it's When instead of Given
-#
-#    When (/^I search for a blog post$/) do
-#
-#    end
-#
-#    Then (/^I should see posts with that value in the title$/) do
-#
-#    end
+#Scenario: Search for Blog Post
+
+   #Given is covered by the previous 'When' - it matches the REGEX, so it doesn't matter that it's When instead of Given
+
+   When (/^I search for a blog post$/) do
+        pending
+   end
+
+   Then (/^I should see posts with that value in the title$/) do
+        pending
+   end
