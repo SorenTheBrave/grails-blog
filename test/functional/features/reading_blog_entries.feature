@@ -10,7 +10,6 @@ Feature: View Blog Entries
 
   Scenario: View a Blog Post
     Given I visit the blog for my favorite blogger
-    And my favorite blogger has been very active
     When I choose a blog post
     Then I should see the blog post
 

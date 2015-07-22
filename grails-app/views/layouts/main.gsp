@@ -14,10 +14,17 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
+		<style>
+			#greeting{
+				float:right;
+				padding-right: 25%;
+				padding-top: 4%;
+			}
+		</style>
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="blogLogo" role="banner"><asset:image src="blog.jpg" alt="My blog!"/></div>
+		<div id="blogLogo" role="banner"><asset:image src="blog.jpg" id="postIt" alt="My blog!"/><h1 id="greeting"><i>Manifest Blog - Making blogging happen &#169;</i></h1></div>
 		<g:layoutBody/>
 		<!--div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div-->

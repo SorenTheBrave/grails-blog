@@ -19,8 +19,5 @@ end
 
 And(/^the newly added blog post is at the top of the recent posts list$/) do
 	return_to_post_added
-  on_page PostsPage do |page|
-    post_text = get_first_post
-    expect(post_text).to match /^post1 content .*$/
-  end
+  verify_post_added
 end

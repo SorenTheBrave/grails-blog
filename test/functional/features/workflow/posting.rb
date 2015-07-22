@@ -10,6 +10,13 @@ def create_post
   end
 end
 
+def verify_post_added
+  on_page PostsPage do |page|
+    post_text = get_first_post
+    expect(post_text).to match /^post1 content .*$/
+  end
+end
+
 def get_first_post
   @browser.table.tbody.tr(:index, 0).text
 end
@@ -27,7 +34,9 @@ end
 
 def blogger_be_active_yo
   unless many_posts_exist?
-    10.times do |n|
+
+      #11 is enough posts to make sure there is a full page of posts
+    11.times do |n|
       on_page PostsPage do |page|
         page.create
       end
@@ -42,6 +51,7 @@ def blogger_be_active_yo
 end
 
 def many_posts_exist?
+  go_to_blog_posts
   answer = false
   on_page PostsPage do
     if @browser.div(:class, "pagination").text != ""
