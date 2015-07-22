@@ -7,4 +7,6 @@ class PostsPage
 
   link(:home, :class => 'home')
   link(:create, :class => 'create')
+  text_field(:searchBox, :id => 'searchBox')
+  button(:searchSubmit, :id =>'searchSubmit')
 end

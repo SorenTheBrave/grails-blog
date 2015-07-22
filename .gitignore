@@ -13,6 +13,9 @@
 *Db.properties
 *Db.script
 
+# intellij editor things that bother me
+.idea/
+
 # logs
 /stacktrace.log
 /test/reports

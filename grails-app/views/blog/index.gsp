@@ -19,7 +19,7 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="New Post" args="[entityName]" /></g:link></li>
 				<li id="searchWidget"><g:form action="index">
-				<div class="search"><input type="text" name="q" value="${params.q}"/><input type="submit" value="search" /></div></g:form></li>
+				<div class="search"><input type="text" name="q" id="searchBox" value="${params.q}"/><input type="submit" value="search" id="searchSubmit" /></div></g:form></li>
 			</ul>
 		</div>
 		<div id="list-blog" class="content scaffold-list" role="main">

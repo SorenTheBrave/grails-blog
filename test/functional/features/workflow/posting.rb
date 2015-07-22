@@ -92,3 +92,10 @@ def post_exists?
     expect(@browser.div(:id, "show-blog").ol.li(:index,1).span(:index,1)).not_to eq ""
   end
 end
+
+def search_for_post
+  on_page PostsPage do |page|
+    page.searchBox = "post1"
+    page.searchSubmit
+  end
+end

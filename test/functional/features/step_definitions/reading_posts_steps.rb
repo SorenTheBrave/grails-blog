@@ -16,7 +16,6 @@ extend PageObject::PageFactory
 
   When(/^I visit the blog for my favorite blogger$/) do
     go_to_blog_posts
-    sleep 5
   end
 
   Then(/^I should see a summary of my favorite blogger's 10 most recent posts in reverse order$/) do
@@ -41,7 +40,8 @@ extend PageObject::PageFactory
    #Given is covered by the previous 'When' - it matches the REGEX, so it doesn't matter that it's When instead of Given
 
    When (/^I search for a blog post$/) do
-        pending
+        search_for_post
+        sleep 5
    end
 
    Then (/^I should see posts with that value in the title$/) do
