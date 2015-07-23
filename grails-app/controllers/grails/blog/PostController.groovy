@@ -1,8 +1,8 @@
 package grails.blog
 
-class BlogController {
+class PostController {
 
-    def scaffold = Blog
+    def scaffold = Post
 	def searchableService
 	
 	

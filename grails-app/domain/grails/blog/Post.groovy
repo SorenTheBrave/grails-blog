@@ -1,14 +1,13 @@
 package grails.blog
 
-class Blog {
+class Post {
 
 	String title
 	String content
 	Date dateCreated
-	//Date lastUpdated
-	//Comments[] comm  //for later, when comments are added
 
 	static searchable = true
+	//static hasMany = [comments: Comment]
 	
     static constraints = {
 		title(blank: false)
