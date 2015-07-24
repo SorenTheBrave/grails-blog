@@ -24,7 +24,7 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="blogLogo" role="banner"><asset:image src="blog.jpg" id="postIt" alt="My blog!"/><h1 id="greeting"><i>Manifest Blog - Making blogging happen &#169;</i></h1></div>
+		<div id="blogLogo" role="banner"><asset:image src="blog.jpg" id="postIt" alt="My blog!"/><h1 id="greeting"><i>Manifest Blog - We make blogging happen &#169;</i></h1></div>
 		<g:layoutBody/>
 		<!--div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div-->
