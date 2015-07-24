@@ -18,8 +18,8 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="New Post" args="[entityName]" /></g:link></li>
-				<li id="searchWidget"><g:form action="index">
-				<div class="search"><input type="text" name="q" id="searchBox" value="${params.q}"/><input type="submit" value="search" id="searchSubmit" /></div></g:form></li>
+				<li id="searchWidget"><g:form action="search">
+				<div class="search"><input type="text" name="q" id="searchBox" value="${params.q}"/><input type="submit" name="search" value="search" action="search" id="searchSubmit" /></div></g:form></li>
 			</ul>
 		</div>
 		<div id="list-post" class="content scaffold-list" role="main">
@@ -40,17 +40,31 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${postInstanceList}" status="i" var="postInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></td>
-					
-						<td>${fieldValue(bean: postInstance, field: "content")}</td>
-					
-						<td><g:formatDate date="${postInstance.dateCreated}" /></td>
-					
-					</tr>
-				</g:each>
+				<g:if test="${params.q == nil}">
+					<g:each in="${postInstanceList}" status="i" var="postInstance">
+						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						
+							<td><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></td>
+						
+							<td>${fieldValue(bean: postInstance, field: "content")}</td>
+						
+							<td><g:formatDate date="${postInstance.dateCreated}" /></td>
+						
+						</tr>
+					</g:each>
+				</g:if>
+				<g:if test="${params.q != nil}">
+					<g:each in="${postInstanceList}" status="i" var="postInstance">
+						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+							<td><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></td>
+						
+							<td>${fieldValue(bean: postInstance, field: "content")}</td>
+						
+							<td><g:formatDate date="${postInstance.dateCreated}" /></td>
+						
+						</tr>
+					</g:each>
+				</g:if>
 				</tbody>
 			</table>
 			<div class="pagination">
