@@ -25,7 +25,7 @@
 			<g:paginate total="${postInstanceCount ?: 0}" />
 		</div>
 		<div id="list-post" class="content scaffold-list" role="main">
-			<h1>Posts "${params.q}"</h1>
+			<h1>Posts</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>

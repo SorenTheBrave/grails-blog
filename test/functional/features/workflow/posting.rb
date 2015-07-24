@@ -95,7 +95,13 @@ end
 
 def search_for_post
   on_page PostsPage do |page|
-    page.searchBox = "post1"
+    page.searchBox = "something"
     page.searchSubmit
+  end
+end
+
+def search_returned_results
+  on_page PostsPage do |page|
+    expect(@browser.div(:id, "list-post").table.tbody.tr(:index,0).a.text).to eq "something"
   end
 end

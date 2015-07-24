@@ -41,9 +41,8 @@ extend PageObject::PageFactory
 
    When (/^I search for a blog post$/) do
         search_for_post
-        sleep 5
    end
 
    Then (/^I should see posts with that value in the title$/) do
-        pending
+        search_returned_results
    end
