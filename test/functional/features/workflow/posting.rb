@@ -83,7 +83,7 @@ end
 
 def choose_random_post
   post_num = Random.rand(1..9)
-  @browser.div(:id, "list-blog").table.tbody.tr(:index, post_num).a.click
+  @browser.div(:id, "list-post").table.tbody.tr(:index, post_num).a.click
 end
 
 def post_exists?

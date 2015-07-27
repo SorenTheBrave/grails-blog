@@ -13,7 +13,7 @@ end
 
 Then(/^I am notified that the blog post was successfully added$/) do
   on_page SuccessPostPage do |page|
-    expect(page.success_message).to match /^Blog (\d+) created$/
+    expect(page.success_message).to match /^Post (\d+) created$/
   end
 end
 
