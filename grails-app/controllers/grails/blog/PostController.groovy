@@ -5,6 +5,7 @@ class PostController {
     def scaffold = Post
 	def searchableService
 	
+	
 	def search = {
 		if(params.q){
 			def query = params.q

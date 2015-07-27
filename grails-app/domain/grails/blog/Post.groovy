@@ -7,7 +7,7 @@ class Post {
 	Date dateCreated
 
 	static searchable = true
-	//static hasMany = [comments: Comment]
+	static hasMany = [comments: Comment]
 	
     static constraints = {
 		title(blank: false)

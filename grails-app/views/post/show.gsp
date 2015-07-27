@@ -1,4 +1,3 @@
-
 <%@ page import="grails.blog.Post" %>
 <!DOCTYPE html>
 <html>
@@ -23,30 +22,30 @@
 			<ol class="property-list post">
 			
 				<g:if test="${postInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="post.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${postInstance}" field="title"/></span>
-					
-				</li>
+					<li class="fieldcontain">
+						<span id="title-label" class="property-label"><g:message code="post.title.label" default="Title" /></span>
+						
+							<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${postInstance}" field="title"/></span>
+						
+					</li>
 				</g:if>
 			
+				
 				<g:if test="${postInstance?.content}">
-				<li class="fieldcontain">
-					<span id="content-label" class="property-label"><g:message code="post.content.label" default="Content" /></span>
-					
-						<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${postInstance}" field="content"/></span>
-					
-				</li>
+					<li class="fieldcontain">
+						<span id="content-label" class="property-label"><g:message code="post.content.label" default="Content" /></span>
+						
+							<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${postInstance}" field="content"/></span>
+					</li>
 				</g:if>
 			
 				<g:if test="${postInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="post.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${postInstance?.dateCreated}" /></span>
-					
-				</li>
+					<li class="fieldcontain">
+						<span id="dateCreated-label" class="property-label"><g:message code="post.dateCreated.label" default="Date Created" /></span>
+						
+							<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${postInstance?.dateCreated}" /></span>
+						
+					</li>
 				</g:if>
 			</ol>
 		</div>
