@@ -5,6 +5,10 @@ class PostController {
     def scaffold = Post
 	def searchableService
 	
+	def show = {
+		def thisPost = Post.findByTitle(params.title)
+		render(view: 'show.gsp', model: [postInstance: thisPost])
+	}
 	
 	def search = {
 		if(params.q){

@@ -41,6 +41,9 @@ grails.views.default.codec = "html"
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
 
+//Using jQuery for AJAX comment functionality
+grails.views.javascript.library="jquery"
+
 // GSP settings
 grails {
     views {

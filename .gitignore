@@ -17,8 +17,8 @@
 .idea/
 
 #database locks, which SHOULD be .gitignore'd by default, GRAILS! >__>
-.devDb.h2.db
-.devDb.lock.db
+devDb.h2.db
+devDb.lock.db
 
 # logs
 /stacktrace.log
