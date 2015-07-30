@@ -12,8 +12,9 @@ class PostController {
 	}
 	
 	def save = {
+		def successMessage = "Post ${params.title} added!"
 		def thisPost = new Post(title: params.title, content: params.content).save(failOnError: true)
-		render(view: 'show.gsp', model: [postInstance: thisPost, comments: thisPost.comments])
+		render(view: 'show.gsp', model: [postInstance: thisPost, comments: thisPost.comments, message: successMessage])
 	}
 	
 	def search = {

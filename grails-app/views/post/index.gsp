@@ -28,12 +28,27 @@
 				text-align: center;
 				padding-bottom: 5px;
 			}
-			.singlePost .date{
-				text-align: right;
+			.singlePost p .dateValue{
+				test-align: right;
 			}
+			.singlePost .date{
+				margin-left: 55%;
+				width: 40%;
+			}
+			
+			.singlePost .dateValue{
+				float: right;
+				width: 65%;
+			}
+			
 			.postContent{
 				margin-top: 10px;
 				margin-bottom: 10px;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+				word-wrap: break-word;
+				width: 90%;
 			}
 		</style>
 	</head>
@@ -64,7 +79,7 @@
 						
 							<p class="postContent">${fieldValue(bean: postInstance, field: "content")}</p>
 						
-							<p class="date">Date posted: <g:formatDate date="${postInstance.dateCreated}" /></p>
+							<div class="date">Date posted: <p class="dateValue"><g:formatDate date="${postInstance.dateCreated}" /></p></div>
 						
 						</div>
 					</g:each>
@@ -72,7 +87,7 @@
 				<g:if test="${params.q != nil}">
 					<g:each in="${postInstanceList}" status="i" var="postInstance">
 						<div class="singlePost ${(i % 2) == 0 ? 'even' : 'odd'}">
-							<h1><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></h1>
+							<h1><g:link action="show" params="[title:postInstance.title]">${fieldValue(bean: postInstance, field: "title")}</g:link></h1>
 						
 							<p>${fieldValue(bean: postInstance, field: "content")}</p>
 						

@@ -31,6 +31,7 @@
 				width: 40%;
 				margin-left: 25%;
 				margin-bottom: 10px;
+				word-wrap: break-word;
 			}
 			.postContent{
 				padding: 10px;
@@ -54,10 +55,25 @@
 			
 			#postContent{
 				text-align: center;
+				margin-top: 10px;
+				margin-left: auto;
+				margin-right: auto;
+				word-wrap: break-word;
+				width: 90%;
 			}
 			
 			#postDate{
 				margin-left: 70%;
+			}
+			
+			#newPostMessage{
+				margin-left: auto;
+				margin-right: auto;
+				background-color: #d3c9ce;
+				border: 1px solid;
+				border-radius: 15px;
+				padding: 5px;
+				text-align: center;
 			}
 			
 		</style>
@@ -73,8 +89,8 @@
 		</div>
 		<div id="show-post" class="content scaffold-show" role="main">
 			<h1><g:message code="View Post" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<g:if test="${message}">
+				<p id="newPostMessage">Post '${params.title}' successfully added!</p>
 			</g:if>
 			<div id="showPost">
 			

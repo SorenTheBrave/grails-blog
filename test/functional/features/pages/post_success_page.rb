@@ -4,6 +4,6 @@ class SuccessPostPage
   include PageObject
 
   link(:list, :class => 'list')
-  div(:success_message, :class => 'message')
+  p(:success_message, :id => 'newPostMessage')
 
 end

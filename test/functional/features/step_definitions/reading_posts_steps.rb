@@ -11,7 +11,7 @@ extend PageObject::PageFactory
 
   Given(/^my favorite blogger has been very active$/) do
     go_to_blog_posts
-    blogger_be_active_yo
+    check_blogger_active
   end
 
   When(/^I visit the blog for my favorite blogger$/) do
@@ -28,7 +28,7 @@ extend PageObject::PageFactory
 
   When (/^I choose a blog post$/) do
     go_to_blog_posts
-    choose_random_post
+    choose_post
   end
 
   Then (/^I should see the blog post$/) do

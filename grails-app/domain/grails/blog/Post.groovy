@@ -5,6 +5,7 @@ class Post {
 	String title
 	String content
 	Date dateCreated
+	SortedSet comments
 
 	static searchable = true
 	static hasMany = [comments: Comment]

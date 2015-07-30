@@ -13,52 +13,22 @@ end
 def verify_post_added
   on_page PostsPage do |page|
     post_text = get_first_post
-    expect(post_text).to match /^post1 content .*$/
+    expect(post_text).to match /^post1$/
   end
 end
 
 def get_first_post
-  @browser.table.tbody.tr(:index, 0).text
+  @browser.div(:id, "postList").div(:index, 0).h1.a.text
 end
 
 def get_all_posts
-  posts = Array.new(10)
+  posts = @browser.divs(:class, "singlePost")
+end
+
+def check_blogger_active
   on_page PostsPage do |page|
-    10.times do |n|
-      posts[n] = @browser.table.tbody.tr(:index, n).text
-    end
-    posts
+    expect(@browser.div(:id, "postList").text).to_not eq ''
   end
-  posts
-end
-
-def blogger_be_active_yo
-  unless many_posts_exist?
-
-      #11 is enough posts to make sure there is a full page of posts
-    11.times do |n|
-      on_page PostsPage do |page|
-        page.create
-      end
-      on_page NewPostPage do |page|
-        page.title = "post#{n}"
-        page.content = "content"
-        page.create
-      end
-    end
-  end
-  sleep 5
-end
-
-def many_posts_exist?
-  go_to_blog_posts
-  answer = false
-  on_page PostsPage do
-    if @browser.div(:class, "pagination").text != ""
-      answer = true
-    end
-  end
-  answer
 end
 
 def see_recent_posts_in_order
@@ -70,7 +40,7 @@ def see_recent_posts_in_order
 
     posts.each do |post|
       prev_post_date = current_post_date
-      current_post_date_str = post.scan(/\d+[-]\d+[-]\d+\s\d+[:]\d+[:]\d+/)[0]
+      current_post_date_str = post.div(:class, "date").p(:class, "dateValue").text.scan(/\d+[-]\d+[-]\d+\s\d+[:]\d+[:]\d+/)[0]
       current_post_date = DateTime.strptime(current_post_date_str, format)
 
       expect(post).to_not be_nil
@@ -81,27 +51,24 @@ def see_recent_posts_in_order
   end
 end
 
-def choose_random_post
-  post_num = Random.rand(1..9)
-  @browser.div(:id, "list-post").table.tbody.tr(:index, post_num).a.click
+def choose_post
+  search_for_post
+  @browser.divs(:class, "singlePost")[0].a.click
 end
 
 def post_exists?
-  on_page SuccessPostPage do |page|
-    expect(@browser.div(:id, "show-blog").ol.li(:index,0).span(:index,1)).not_to eq ""
-    expect(@browser.div(:id, "show-blog").ol.li(:index,1).span(:index,1)).not_to eq ""
-  end
+  expect(@browser.div(:id, "showPost").text).not_to eq ""
 end
 
 def search_for_post
   on_page PostsPage do |page|
-    page.searchBox = "something"
+    page.searchBox = "Comment on this"
     page.searchSubmit
   end
 end
 
 def search_returned_results
   on_page PostsPage do |page|
-    expect(@browser.div(:id, "list-post").table.tbody.tr(:index,0).a.text).to eq "something"
+    expect(@browser.div(:class, "singlePost").h1.text).to eq "Comment on this"
   end
 end

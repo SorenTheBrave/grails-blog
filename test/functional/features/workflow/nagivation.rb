@@ -7,7 +7,7 @@ def go_to_blog_home
 end
 
 def go_to_blog_posts
-  unless @browser.url == 'http://localhost:8080/grails-blog/blog/index'  #check this
+  unless @browser.url == 'http://localhost:8080/grails-blog/post/index'  #check this
     go_to_blog_home
     on_page BlogHomePage do |page|
       page.login
