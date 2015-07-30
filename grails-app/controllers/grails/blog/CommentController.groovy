@@ -1,11 +1,14 @@
 package grails.blog
 
+import grails.converters.JSON
+
 class CommentController {
-	def renderComments(postId){
-		def parentPost = Post.findById(postId)
-		//render(view: ) add a template to display all comments on a post with id postId
-	}
-	def saveComment(postId){
+	def postComment(){
+		def currentPost = Post.findById(params.id)
+		def newComment = new Comment(authorName: params.commenterName, content: params.commentContent, post: currentPost)
+		currentPost.addToComments(newComment)
+		newComment.save(failOnError: true)
 		
+		render(view: 'newComment', model: [comments: newComment])
 	}
 }

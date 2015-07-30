@@ -6,8 +6,14 @@ class PostController {
 	def searchableService
 	
 	def show = {
-		def thisPost = Post.findByTitle(params.title)
-		render(view: 'show.gsp', model: [postInstance: thisPost])
+		def thisPost = Post.findByTitle(params.title, [sort: 'dateCreated', order: 'desc'])
+		def comments = thisPost.comments
+		render(view: 'show.gsp', model: [postInstance: thisPost, comments: comments])
+	}
+	
+	def save = {
+		def thisPost = new Post(title: params.title, content: params.content).save(failOnError: true)
+		render(view: 'show.gsp', model: [postInstance: thisPost, comments: thisPost.comments])
 	}
 	
 	def search = {

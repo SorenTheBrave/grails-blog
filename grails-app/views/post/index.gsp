@@ -9,6 +9,32 @@
 			#searchWidget{
 				margin-left: 45%;
 			}
+			.singlePost{
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				border-radius: 25px;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+			.singlePost h1{
+				padding-left: 5px;
+				padding-top: 5px;
+			}
+			.singlePost p{
+				margin-left: auto;
+				margin-right: auto;
+				width: 80%;
+				text-align: center;
+				padding-bottom: 5px;
+			}
+			.singlePost .date{
+				text-align: right;
+			}
+			.postContent{
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -25,50 +51,38 @@
 			<g:paginate total="${postInstanceCount ?: 0}" />
 		</div>
 		<div id="list-post" class="content scaffold-list" role="main">
-			<h1>Posts</h1>
+			<h1>Posts</h1> <hr/>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="title" title="${message(code: 'post.title.label', default: 'Title')}" />
-					
-						<g:sortableColumn property="content" title="${message(code: 'post.content.label', default: 'Content')}" />
-					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'post.dateCreated.label', default: 'Date Created')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
+			<div id="postList">
 				<g:if test="${params.q == nil}">
 					<g:each in="${postInstanceList}" status="i" var="postInstance">
-						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<div class="singlePost ${(i % 2) == 0 ? 'even' : 'odd'}">
 						
-							<td><g:link action="show" params="[title:postInstance.title]">${fieldValue(bean: postInstance, field: "title")}</g:link></td>
+							<h1><g:link action="show" params="[title:postInstance.title]">${fieldValue(bean: postInstance, field: "title")}</g:link></h1>
 						
-							<td>${fieldValue(bean: postInstance, field: "content")}</td>
+							<p class="postContent">${fieldValue(bean: postInstance, field: "content")}</p>
 						
-							<td><g:formatDate date="${postInstance.dateCreated}" /></td>
+							<p class="date">Date posted: <g:formatDate date="${postInstance.dateCreated}" /></p>
 						
-						</tr>
+						</div>
 					</g:each>
 				</g:if>
 				<g:if test="${params.q != nil}">
 					<g:each in="${postInstanceList}" status="i" var="postInstance">
-						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-							<td><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></td>
+						<div class="singlePost ${(i % 2) == 0 ? 'even' : 'odd'}">
+							<h1><g:link action="show" id="${postInstance.id}">${fieldValue(bean: postInstance, field: "title")}</g:link></h1>
 						
-							<td>${fieldValue(bean: postInstance, field: "content")}</td>
+							<p>${fieldValue(bean: postInstance, field: "content")}</p>
 						
-							<td><g:formatDate date="${postInstance.dateCreated}" /></td>
+							<p class="date"><g:formatDate date="${postInstance.dateCreated}" /></p>
 						
-						</tr>
+						</div>
 					</g:each>
 				</g:if>
-				</tbody>
-			</table>
+			</div>
+			
 			<div class="pagination">
 				<g:paginate total="${postInstanceCount ?: 0}" />
 			</div>
