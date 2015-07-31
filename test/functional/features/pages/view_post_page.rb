@@ -5,5 +5,5 @@ class ViewPostPage
 
   text_field(:name, :id => 'name')
   text_area(:comment, :id => 'comment')
-  button(:submit, name => 'submitComment')
+  button(:submit, :id => 'submitComment')
 end

@@ -106,11 +106,10 @@
 				</g:if>
 			</div>
 		</div>
-		
-		<g:if test="${postInstance.comments}">
-			<h1 style="padding-left:3%">Comments on this Post</h1>
-			<hr/><br/>
-			<div id="userComments">
+		<h1 style="padding-left:3%">Comments on this Post</h1>
+		<hr/><br/>
+		<div id="userComments">
+			<g:if test="${postInstance.comments}">
 				<g:each in="${postInstance.comments}" var="userComment">
 					<div class="singleComment">
 						<h3><g:fieldValue bean="${userComment}" field="authorName"/></h3>
@@ -118,8 +117,8 @@
 						<p class="postDate">date posted: <g:fieldValue bean="${userComment}" field="dateCreated"/></p>
 					</div>
 				</g:each>
-			</div>
-		</g:if>
+			</g:if>
+		</div>
 		
 		<!-- new comment form -->
 		<h1 style="padding-left:3%">Add a comment</h1>
@@ -129,10 +128,11 @@
 				<input type="hidden" name="id" value="${postInstance.id}">
 				<label for="commenterName" class="commentForm">Your name:</label> <input id="name" name="commenterName" class="commentForm"/><br/>
 				<label for="commentContent" class="commentForm">Your comment:</label> <textArea id="comment" name="commentContent" class="commentForm"></textArea><br/>
-				<g:submitToRemote name="submitComment" value="submit" url="[controller: 'comment', action: 'postComment']"/>
+				<g:submitToRemote name="submitComment" id="submitComment" value="submit" url="[controller: 'comment', action: 'postComment']" update="userComments"/>
 			</g:form>
 		</div>
 		
+		<!-- Edit & Delete buttons at the bottom -->
 		<g:form url="[resource:postInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<g:link class="edit" action="edit" resource="${postInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

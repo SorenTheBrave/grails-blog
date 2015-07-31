@@ -10,11 +10,11 @@ def post_comment
   on_page ViewPostPage do |page|
     page.name = "WatirTest"
     page.comment = "Posting a comment!"
-
+    page.submit
   end
 end
 
 def check_comment_posted
-  sleep 10
+  sleep 1
   expect(@browser.div(:id, "userComments").divs(:class, "singleComment")[0].text).to match /^WatirTest\n[\S\s]+/
 end
