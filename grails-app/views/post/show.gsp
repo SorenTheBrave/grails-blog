@@ -76,6 +76,17 @@
 				text-align: center;
 			}
 			
+			#error{
+				padding: 5px;
+				margin-right: auto;
+				margin-left: auto;
+				color: red;
+				background-color: #bfbdbd;
+				border: 1px solid black;
+				border-radius: 15px;
+				text-align: center;
+				width: 50%;
+			}
 		</style>
 	</head>
 	<body>
@@ -120,15 +131,27 @@
 			</g:if>
 		</div>
 		
+		<g:javascript> 
+			function showError(){
+				$("#error").show();
+			}
+			
+			function clearFields(){
+				alert('success');
+				$("#error").hide();
+			}
+		</g:javascript>
+		
 		<!-- new comment form -->
 		<h1 style="padding-left:3%">Add a comment</h1>
 		<hr/><br/>
+		<div id="error" hidden>Please enter your name and a comment before submitting!</div>
 		<div id="postComments">
 			<g:form id="newComment" name="remoteCommentForm">
 				<input type="hidden" name="id" value="${postInstance.id}">
 				<label for="commenterName" class="commentForm">Your name:</label> <input id="name" name="commenterName" class="commentForm"/><br/>
 				<label for="commentContent" class="commentForm">Your comment:</label> <textArea id="comment" name="commentContent" class="commentForm"></textArea><br/>
-				<g:submitToRemote name="submitComment" id="submitComment" value="submit" url="[controller: 'comment', action: 'postComment']" update="userComments"/>
+				<g:submitToRemote name="submitComment" id="submitComment" value="submit" url="[controller: 'comment', action: 'postComment']" update="userComments" onFailure="showError()" onSuccess="clearFields()"/>
 			</g:form>
 		</div>
 		

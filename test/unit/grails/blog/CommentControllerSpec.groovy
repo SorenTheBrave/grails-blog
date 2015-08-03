@@ -15,6 +15,7 @@ class CommentControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void testPostComment() {
+		
     }
 }
