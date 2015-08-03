@@ -3,6 +3,8 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Welcome to your new blog!</title>
+		<link rel="stylesheet" href="<g:resource dir="css" file="bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<g:resource dir="css" file="main-layout.css"/>">
 		<style type="text/css" media="screen">
 
 			#page-body {
@@ -31,27 +33,20 @@
 				margin: 0.25em 0;
 			}
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
-
-				#page-body {
-					margin: 0 1em 1em;
-				}
-
-				#page-body h1 {
-					margin-top: 0;
-				}
+			#page-body{
+				margin-top: 0;
+				text-align: center;
+				width: 60%;
+				margin-left: auto;
+				margin-right: auto;
 			}
+			
 		</style>
 	</head>
 	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="page-body" role="main">
 			<h1>Welcome to your new blog!</h1>
-			<p>Click below to go to your blog!</p>
-			<a id="login" href="/grails-blog/post/index">Go to my blog </a>
+			<a id="login" href="/grails-blog/post/index" class="btn btn-primary">Check it out!</a>
 		</div>
 	</body>
 </html>

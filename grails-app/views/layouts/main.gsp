@@ -12,21 +12,23 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-  		<asset:stylesheet src="application.css"/>
+		<link rel="stylesheet" href="<g:resource dir="css" file="bootstrap.min.css"/>">
 		<asset:javascript src="application.js"/>
 		<style>
 			#greeting{
-				float:right;
-				padding-right: 25%;
-				padding-top: 4%;
+				width: 100%;
+				font-size: 24pt;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
 			}
 		</style>
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="blogLogo" role="banner"><asset:image src="blog.jpg" id="postIt" alt="My blog!"/><h1 id="greeting"><i>Manifest Blog - We make blogging happen &#169;</i></h1></div>
+		<div id="blogLogo" role="banner" class="row">
+			<h1 id="greeting" class="col-xs-10">Manifest Blog - We make blogging happen &#169;</h1>
+		</div>
 		<g:layoutBody/>
-		<!--div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div-->
 	</body>
 </html>

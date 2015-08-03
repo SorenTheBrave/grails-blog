@@ -7,7 +7,7 @@
 		<g:message code="post.title.label" default="Title" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="title" required="" value="${postInstance?.title}"/>
+	<g:textField name="title" required="" value="${postInstance?.title}" class="form-control"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="post.content.label" default="Content" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="content" cols="40" rows="5" maxlength="2000" required="" value="${postInstance?.content}"/>
+	<g:textArea name="content" cols="40" rows="5" maxlength="2000" required="" value="${postInstance?.content}" class="form-control"/>
 
 </div>
 

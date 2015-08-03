@@ -2,70 +2,35 @@
 <html>
 <head>
 	<meta name="layout" content="main">
+	<link rel="stylesheet" href="<g:resource dir="css" file="bootstrap.min.css"/>">
+	<link rel="stylesheet" href="<g:resource dir="css" file="main-layout.css"/>">
 	<title>No posts found!</title>
-	<style type="text/css" media="screen">
-
-			#page-body {
-				margin-left: auto;
-				margin-right: auto;
-			}
-			
-			h1#no_posts_message {
-				padding-top: 5%;
-				padding-left: 40% !important;
-				padding-bottom: 5% !important;
-			}
-
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
-
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
-
-			#controller-list ul {
-				list-style-position: inside;
-			}
-
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
-			
-			#searchWidget{
-				margin-left: 45%;
-			}
-
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
-
-				#page-body {
-					margin: 0 1em 1em;
-				}
-
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
+	<style>
+		#page-body{
+			text-align: center;
+		}
+	</style>
 	</head>
 </head>
-	<div class="nav" role="navigation">
-		<ul>
-			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			<li><g:link class="create" action="create"><g:message code="New Post" args="[entityName]" /></g:link></li>
-			<li id="searchWidget"><g:form action="search">
-			<div class="search"><input type="text" name="q" id="searchBox" value="${params.q}"/><input type="submit" name="search" value="search" action="search" id="searchSubmit" /></div></g:form></li>
-		</ul>
+	<div class="nav row" role="navigation">
+		<div class="col-xs-6">
+			<div id="navButtons" class="btn-group col-xs-12">
+				<a class="btn btn-primary" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<g:link class="list btn btn-info" action="index"><g:message code="Post List" args="[entityName]" /></g:link>
+				<g:link class="btn btn-success" action="create"><g:message code="New Post" args="[entityName]" /></g:link>
+			</div>
+		</div>
+		<div id="searchWidget" class="search col-xs-6">
+			<g:form action="search" class="input-group">
+				<input type="text" name="q" class="form-control" id="searchBox" value="${params.q}"/>
+				<span class="input-group-btn">
+					<input class="btn btn-primary" type="submit" name="search" value="search" action="search" id="searchSubmit" />
+				</span>
+			</g:form>
+		</div>
 	</div>
 	<div id="page-body" class="content scaffold-list" role="main">
 		<h1 id="no_posts_message">No posts found! :(</h1>
+		<p>You can click 'Post List' above, or search with an empty search box to show all posts again. </p>
 	</div>
 </html>

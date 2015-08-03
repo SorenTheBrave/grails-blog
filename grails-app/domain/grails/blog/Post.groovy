@@ -7,7 +7,10 @@ class Post {
 	Date dateCreated
 	SortedSet comments
 
-	static searchable = true
+	static searchable = {
+		title boost: 2.0
+		dateCreated index: 'not_analyzed'
+	}
 	static hasMany = [comments: Comment]
 	
     static constraints = {

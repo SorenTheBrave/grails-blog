@@ -1,0 +1,22 @@
+body{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #e8e8e8;
+}
+
+li{
+	list-style: none;
+}
+
+.content{
+	background-color: white;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+textArea{
+	resize: none;
+}
