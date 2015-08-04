@@ -152,7 +152,7 @@
 				<g:form id="newComment" name="remoteCommentForm" class="form-group">
 					<input type="hidden" name="id" value="${postInstance.id}">
 					<label for="commenterName" class="commentForm">Your name:</label> <input id="name" name="commenterName" class="commentForm form-control"/><br/>
-					<label for="commentContent" class="commentForm">Your comment:</label> <textArea id="comment" name="commentContent" class="commentForm form-control"></textArea><br/>
+					<label for="commentContent" class="commentForm">Your comment:</label> <textArea id="comment" name="commentContent" class="commentForm form-control" rows="6"></textArea><br/>
 					<g:submitToRemote name="submitComment" id="submitComment" class="btn btn-primary" value="submit" url="[controller: 'comment', action: 'postComment']" update="userComments" onFailure="showError()" onSuccess="clearFields()"/>
 				</g:form>
 			</div>
